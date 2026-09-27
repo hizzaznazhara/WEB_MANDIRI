@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surgery Simulator - GrowCulator</title>
+</head>
+<body>
+    <header>
+        <h1>Mode: Surgery Simulator</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Kembali ke Beranda</a></li>
+            <li><a href="crime.html">Pindah ke Crime Simulator</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <h2>Ruang Operasi</h2>
+            
+            <img src="img/surg.jpg" alt="Karakter Growtopia sedang terbaring di kasur operasi dengan status pasien di atas kepalanya" width="300">
+            
+            <h3>Status Pasien:</h3>
+            <p>Kondisi: <strong>Patient has shattered bones.</strong></p>
+            <p>Denyut Nadi: Lemah | Suhu: Normal</p>
+
+            <h3>Tindakan Medis</h3>
+            <form action="#" method="POST">
+                <p>
+                    <label for="pilihAlat">Pilih Alat Bedah:</label><br>
+                    <select id="pilihAlat" name="pilihAlat">
+                        <option value="sponge">Sponge</option>
+                        <option value="scalpel">Scalpel</option>
+                        <option value="stitches">Stitches</option>
+                        <option value="splint">Splint</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="catatanMedis">Catatan Tindakan (Opsional):</label><br>
+                    <textarea id="catatanMedis" name="catatanMedis" rows="3" cols="30" placeholder="Contoh: Menggunakan splint untuk tulang patah..."></textarea>
+                </p>
+                <p>
+                    <button type="button">Gunakan Alat</button>
+                </p>
+            </form>
+        </article>
+    </main>
+
+    <footer>
+        <p>&&copy; 2026 GrowSimulator. Tugas Web 2.</p>
+    </footer>
+</body>
+</html>
