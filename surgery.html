@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surgery Simulator - GrowCulator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Mode: Surgery Simulator</h1>
+        <h1>Mode: <span class="mode-name">Surgery Simulator</span></h1>
     </header>
 
     <nav>
@@ -29,7 +30,7 @@
 
             <h3>Tindakan Medis</h3>
             <form action="#" method="POST">
-                <p>
+                <p class="form-field">
                     <label for="pilihAlat">Pilih Alat Bedah:</label><br>
                     <select id="pilihAlat" name="pilihAlat">
                         <option value="sponge">Sponge</option>
@@ -38,7 +39,7 @@
                         <option value="splint">Splint</option>
                     </select>
                 </p>
-                <p>
+                <p class="form-field">
                     <label for="catatanMedis">Catatan Tindakan (Opsional):</label><br>
                     <textarea id="catatanMedis" name="catatanMedis" rows="3" cols="30" placeholder="Contoh: Menggunakan splint untuk tulang patah..."></textarea>
                 </p>
