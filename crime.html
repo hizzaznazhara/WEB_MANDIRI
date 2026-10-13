@@ -1,46 +1,174 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crime Simulator - GrowCulator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Panduan villain Growtopia: daftar musuh, kartu yang dibutuhkan, dan strategi melawan mereka.">
+    <title>Guide: Villains - GrowSimulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1>Mode: <span class="mode-name">Crime Simulator</span></h1>
+<body class="d-flex flex-column min-vh-100">
+    <header class="site-header text-center py-4">
+        <div class="container">
+            <h1 class="h2 mb-2">Guide: <span class="mode-name">Villains</span></h1>
+            <p class="mb-0">Referensi villain Growtopia, kartu yang perlu dibawa, dan strategi mengalahkannya.</p>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Kembali ke Beranda</a></li>
-            <li><a href="surgery.html">Pindah ke Surgery Simulator</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-sm site-nav">
+        <div class="container justify-content-center">
+            <ul class="navbar-nav flex-column flex-sm-row gap-sm-2 text-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="surgery.html">Surgery Simulator</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <article>
-            <h2>Persiapan Aksi Kriminal</h2>
-            
-            <img class="crime-image" src="img/crime.jpg" alt="Karakter bos kriminal Growtopia memberikan misi di markas bawah tanah" width="300">
+    <main class="container flex-grow-1 py-4 py-md-5">
+        <article class="content-card p-3 p-md-4 mx-auto">
+            <div class="row align-items-center g-4 mb-4">
+                <div class="col-md-8">
+                    <h2 class="h3">Tentang Villains</h2>
+                    <p class="mb-2">Villains adalah musuh dalam mode crimefighting. Pemain memakai Superpower Cards untuk menyerang dan meng-counter kartu lawan. Gunakan urutan kartu yang sesuai dengan lawan yang dihadapi.</p>
+                    <p class="mb-0">Crime Wave dapat memanggil villain secara acak. Panduan ini merangkum kartu inti dan strategi dari guide Growtopia Wiki.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img class="img-fluid rounded crime-image" src="img/crime.jpg" alt="Ilustrasi villain Growtopia">
+                </div>
+            </div>
 
-            <h3>Kartu Identitas Kriminal (Crime Card)</h3>
-            <p>Untuk memulai misi ini, kamu memerlukan setidaknya 1 Crime Card. Berikut adalah status karaktermu saat ini:</p>
-            <ul>
-                <li><strong>Reputasi:</strong> Pickpocket (Level 1)</li>
-                <li><strong>Heat Level:</strong> 0% (Aman dari polisi)</li>
-                <li><strong>Senjata Tersedia:</strong> Crowbar</li>
-            </ul>
+            <div class="alert alert-success" role="note">
+                <strong>Catatan:</strong> kartu tambahan di bawah ini adalah slot bebas yang bisa diisi kartu lain sesuai petunjuk guide. Strategi mengandalkan kartu utama yang disebutkan.
+            </div>
 
-            <h3>Pilih Lokasi Target</h3>
-            <p>Tekan tombol di bawah ini untuk memulai simulasi peretasan dan pembobolan brankas.</p>
-            
-            <a class="button-link" href="#">Mulai Bobol Brankas Convenience Store</a>
+            <nav class="border rounded p-3 mb-5" aria-label="Daftar isi panduan">
+                <h2 class="h5">Daftar Isi</h2>
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-outline-success btn-sm" href="#villains">Villains</a>
+                    <a class="btn btn-outline-success btn-sm" href="#masterminds">Masterminds</a>
+                    <a class="btn btn-outline-success btn-sm" href="#supervillains">Supervillains</a>
+                    <a class="btn btn-outline-success btn-sm" href="#event-villains">Event Supervillains</a>
+                    <a class="btn btn-outline-success btn-sm" href="#rewards">Rewards</a>
+                </div>
+            </nav>
+
+            <section id="villains" class="mb-5">
+                <h2 class="h3">Villains</h2>
+                <p class="text-secondary">Empat villain reguler memiliki 8 health.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <section class="card h-100">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">The Firebug <span class="badge text-bg-secondary">8 HP</span></h3>
+                                <p><strong>Kartu utama:</strong> Frozen Mirror, Ice Shards + 3 kartu lain.</p>
+                                <p class="mb-0"><strong>Strategi:</strong> Gunakan Frozen Mirror lalu Ice Shards. Ulangi bergantian sampai Firebug kalah.</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-6">
+                        <section class="card h-100">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">Jimmy Snow <span class="badge text-bg-secondary">8 HP</span></h3>
+                                <p><strong>Kartu utama:</strong> Thunderstorm, Shocking Fist + 3 kartu lain.</p>
+                                <p class="mb-0"><strong>Strategi:</strong> Gunakan Thunderstorm lalu Shocking Fist. Ulangi bergantian sampai Jimmy Snow kalah.</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-6">
+                        <section class="card h-100">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">Big Bertha <span class="badge text-bg-secondary">8 HP</span></h3>
+                                <p><strong>Kartu utama:</strong> Overheat, Incinerate + 3 kartu lain.</p>
+                                <p class="mb-0"><strong>Strategi:</strong> Gunakan Overheat lalu Incinerate. Ulangi bergantian sampai Big Bertha kalah.</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-6">
+                        <section class="card h-100">
+                            <div class="card-body">
+                                <h3 class="h5 card-title">Shockinator <span class="badge text-bg-secondary">8 HP</span></h3>
+                                <p><strong>Kartu utama:</strong> Enrage, Crush + 3 kartu lain.</p>
+                                <p class="mb-0"><strong>Strategi:</strong> Gunakan Enrage lalu Crush. Ulangi bergantian sampai Shockinator kalah.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+            <section id="masterminds" class="mb-5">
+                <h2 class="h3">Masterminds</h2>
+                <p class="text-secondary">Empat mastermind reguler memiliki 10 health.</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped align-middle">
+                        <thead class="table-light"><tr><th scope="col">Mastermind</th><th scope="col">Kartu utama</th><th scope="col">Urutan / strategi</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Generic Thug #17</th><td>Incinerate, Flame On! + 3 kartu berbeda</td><td>Pakai Incinerate, lalu Flame On!; ulangi urutan ini.</td></tr>
+                            <tr><th scope="row">Professor Pummel</th><td>Incinerate, Flame On! + 3 kartu lain</td><td>Pakai Incinerate, lalu Flame On!; ulangi urutan ini.</td></tr>
+                            <tr><th scope="row">Dragon Hand</th><td>Crush, Regeneration + 3 kartu Ice berbeda</td><td>Pakai Crush, lalu Regeneration; ulangi urutan ini. Deck dengan 3 kartu Ice berbeda mendorong Dragon Hand lebih sering memakai kartu Lightning.</td></tr>
+                            <tr><th scope="row">Kat 5</th><td>Overcharge, Shocking Fist, Thunderstorm + 2 kartu lain</td><td>Gunakan Overcharge, lalu pakai Shocking Fist dan Thunderstorm bergantian.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="supervillains" class="mb-5">
+                <h2 class="h3">Supervillains</h2>
+                <div class="accordion" id="supervillain-list">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ms-terry" aria-expanded="true" aria-controls="ms-terry">Ms. Terry · 14 HP</button></h3>
+                        <div id="ms-terry" class="accordion-collapse collapse show" data-bs-parent="#supervillain-list"><div class="accordion-body"><p>Bawa satu kartu untuk setiap elemen, disarankan Incinerate, Megawatt Pulse, Frozen Mirror, dan Regeneration, serta Super Speed.</p><p class="mb-0">Gunakan Super Speed, lalu counter kartu Ms. Terry berikutnya. Ulangi sampai kalah.</p></div></div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#koop" aria-expanded="false" aria-controls="koop">Z. Everett Koop</button></h3>
+                        <div id="koop" class="accordion-collapse collapse" data-bs-parent="#supervillain-list"><div class="accordion-body"><p><strong>Kartu:</strong> Incinerate, Flame On! + 3 kartu Lightning lain.</p><p class="mb-0"><strong>Strategi:</strong> Pakai Incinerate, lalu Flame On!; ulangi urutan ini sampai Koop kalah.</p></div></div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#destructo" aria-expanded="false" aria-controls="destructo">Dr. Destructo</button></h3>
+                        <div id="destructo" class="accordion-collapse collapse" data-bs-parent="#supervillain-list"><div class="accordion-body"><p><strong>Kartu:</strong> Frost Breath, Frozen Mirror + 3 kartu Muscle lain.</p><p class="mb-0"><strong>Strategi:</strong> Pakai Frost Breath, lalu Frozen Mirror; ulangi urutan ini sampai Dr. Destructo kalah.</p></div></div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#seth" aria-expanded="false" aria-controls="seth">Almighty Seth</button></h3>
+                        <div id="seth" class="accordion-collapse collapse" data-bs-parent="#supervillain-list"><div class="accordion-body"><p><strong>Kartu:</strong> Crush, Regeneration + 3 kartu Ice lain.</p><p class="mb-0"><strong>Strategi:</strong> Pakai Crush, lalu Regeneration; ulangi urutan ini.</p></div></div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#devil-ham" aria-expanded="false" aria-controls="devil-ham">Devil Ham</button></h3>
+                        <div id="devil-ham" class="accordion-collapse collapse" data-bs-parent="#supervillain-list"><div class="accordion-body"><p><strong>Kartu:</strong> Frost Breath, Frozen Mirror + 3 kartu Lightning lain.</p><p class="mb-0"><strong>Strategi:</strong> Pakai Frost Breath, lalu Frozen Mirror; ulangi urutan ini.</p></div></div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#geiger" aria-expanded="false" aria-controls="geiger">H.R. Geiger · 15 HP</button></h3>
+                        <div id="geiger" class="accordion-collapse collapse" data-bs-parent="#supervillain-list"><div class="accordion-body"><p>H.R. Geiger muncul dari pencarian radioactive item memakai Geiger Counter saat Geiger Day.</p><p><strong>Kartu yang disarankan:</strong> Flame On!, Regeneration, Thunderstorm, Overcharge, dan Megawatt Pulse.</p><ul class="mb-0"><li>Aktifkan Overcharge.</li><li>Jika Geiger memakai Regeneration, balas dengan Thunderstorm. Jika sedang cooldown, gunakan Megawatt Pulse; jika keduanya cooldown, gunakan Overcharge.</li><li>Balas Liquify dengan Regeneration, Alien Egg dengan Flame On!, dan Thunderstorm dengan Thunderstorm.</li></ul></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="event-villains" class="mb-5">
+                <h2 class="h3">Event Supervillains</h2>
+                <p>Villain event tertentu muncul selama event terkait atau dapat dipanggil menggunakan item tertentu. Strategi singkat dari guide:</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle">
+                        <thead class="table-light"><tr><th scope="col">Villain</th><th scope="col">Kartu utama</th><th scope="col">Strategi</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Paddy O’Malice</th><td>Incinerate, Overheat, Frozen Mirror, Regeneration, kartu Lightning</td><td>Jaga health dengan Regeneration. Jika terkena Frost Breath, gunakan Overheat lalu Incinerate pada giliran berikutnya.</td></tr>
+                            <tr><th scope="row">Bunny Barko</th><td>Incinerate, Overheat + 3 kartu Lightning lain</td><td>Pakai Incinerate, lalu Overheat; ulangi urutan ini.</td></tr>
+                            <tr><th scope="row">El Peligro</th><td>Frost Breath, Frozen Mirror + 3 kartu Muscle lain</td><td>Pakai Frost Breath, lalu Frozen Mirror; ulangi urutan ini.</td></tr>
+                            <tr><th scope="row">Pine-Fresh</th><td>Crush, Regeneration + 3 kartu Ice lain</td><td>Pakai Crush, lalu Regeneration; ulangi urutan ini.</td></tr>
+                            <tr><th scope="row">The Harvester · 20 HP</th><td>Frost Breath, Frozen Mirror, Super Strength, Super Speed, Crush</td><td>Pakai Frost Breath, lalu Frozen Mirror; ulangi urutan ini. Jika Harvester memakai Incinerate, gunakan Super Speed, lalu counter kartu berikutnya.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="rewards" class="mb-3">
+                <h2 class="h3">Rewards</h2>
+                <p>Hadiah yang mungkin didapat termasuk Superpower Cards, Henchman, Superhero Uniform, Super Logos, Villain Portrait, gems, dan item lain. Beberapa villain punya hadiah eksklusif, sedangkan hadiah event hanya tersedia pada event tertentu.</p>
+            </section>
         </article>
     </main>
 
-    <footer>
-        <p>&copy; 2026 GrowSimulator. Tugas Web 2.</p>
+    <footer class="site-footer py-3 text-center">
+        <div class="container"><p class="mb-0">&copy; 2026 GrowSimulator.</p></div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

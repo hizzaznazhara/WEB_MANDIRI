@@ -1,0 +1,102 @@
+.surgery-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #2d8065;
+    color: #fff0c8;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.surgery-screen {
+    width: min(100%, 900px);
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 35px 21px 22px;
+    border-right: 1px solid rgb(205 239 216 / 45%);
+    border-left: 1px solid rgb(205 239 216 / 45%);
+    background: #2d8065;
+}
+
+.simulator-heading { margin-bottom: 3px; text-align: center; }
+.simulator-heading h1 { margin: 0; color: #fff0c8; font-size: 12px; font-weight: 400; line-height: 1.35; }
+.simulator-heading p { margin: 0; color: #fff0c8; font-size: 10px; }
+.patient-status { min-height: 181px; color: #ffe2ac; font-size: 16px; font-weight: 700; }
+.patient-status p { margin: 2px 0; }
+.patient-status > p:first-child { margin-top: 4px; }
+.patient-status strong { color: #b7e6c5; }
+.patient-status .status-row { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.patient-status .status-row span { white-space: nowrap; }
+.patient-status .status-row:first-of-type strong:last-child { color: #ff8d98; }
+.patient-status #pulse-status { color: #b7e6c5; }
+.patient-status #patient-state { color: #ff8996; }
+.patient-status #temp-status { color: #ffc46b; }
+.patient-status #site-status { color: #b7e6c5; }
+.patient-status #incision-status { color: #8de0a2; }
+.patient-status .patient-alert { margin-top: 24px; color: #c5ead0; }
+
+.tool-trays {
+    display: grid;
+    grid-template-columns: repeat(7, 80px);
+    justify-content: start;
+    gap: 17px 30px;
+    min-height: 202px;
+    padding: 0 10px 20px;
+}
+
+.tool-card {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+    image-rendering: pixelated;
+    transition: filter .12s ease, transform .12s ease;
+}
+
+.tool-card:hover:not(:disabled), .tool-card:focus-visible:not(:disabled) { filter: brightness(1.2); transform: translateY(-2px); outline: 2px solid #fff0c8; outline-offset: 2px; }
+.tool-card:disabled { cursor: default; filter: grayscale(.3); opacity: .6; }
+.tool-card img { display: block; width: 80px; height: 80px; margin: 0; border: 0; border-radius: 0; image-rendering: pixelated; }
+.game-divider { height: 0; margin: 1px 0 6px; border: 0; border-top: 1px solid rgb(255 245 218 / 80%); }
+.case-controls { display: flex; align-items: center; gap: 10px; margin-top: 2px; }
+.case-controls #move-counter { margin-left: auto; color: #d1e7f2; font: 11px Arial, sans-serif; }
+.game-button { min-height: 27px; padding: 2px 9px; border: 1px solid #333; border-radius: 2px; background: #f5f5f5; color: #111; font: 15px Arial, sans-serif; }
+.game-button:hover:not(:disabled) { background: #fff0c8; }
+.game-button:disabled { opacity: .55; }
+.case-message { min-height: 35px; margin: 8px 0 5px; color: #c5ead0; font-weight: 700; }
+.case-selection h2 { margin: 15px 0 17px; color: #fff0c8; font-size: 15px; font-weight: 700; }
+.case-group h3 { margin: 0 0 15px; color: #fff0c8; font-size: 15px; font-weight: 700; }
+.case-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 18px; row-gap: 5px; }
+.case-card { display: block; width: fit-content; max-width: 100%; padding: 0 3px; border: 0; border-radius: 0; background: transparent; color: #fff0c8; font: 15px Georgia, 'Times New Roman', serif; line-height: 1.45; text-align: left; cursor: pointer; }
+.case-card:hover, .case-card:focus-visible { color: #fff; text-decoration: underline; }
+.case-card.active { color: #ffed9f; text-decoration: underline; }
+.empty-tray { grid-column: 1 / -1; align-self: center; margin: 10px 0; color: #d7eee0; font-size: 13px; }
+.regular-cases { margin-top: 63px; }
+.game-footer { display: flex; justify-content: space-between; gap: 8px; margin-top: 30px; padding-top: 8px; border-top: 1px solid rgb(238 248 238 / 40%); color: #d7eee0; font: 10px Arial, sans-serif; }
+.game-footer a { color: #fff0c8; }
+
+@media (max-width: 760px) {
+    .surgery-screen { padding: 25px 14px 18px; }
+    .tool-trays { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px 10px; padding-right: 3px; padding-left: 3px; }
+    .tool-card, .tool-card img { width: 100%; height: auto; aspect-ratio: 1; }
+    .patient-status { min-height: 175px; }
+    .case-list { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 8px; }
+}
+
+@media (max-width: 480px) {
+    .surgery-page { font-size: 14px; }
+    .surgery-screen { padding-right: 10px; padding-left: 10px; }
+    .patient-status { min-height: 164px; font-size: 14px; }
+    .patient-status .status-row { gap: 0 13px; }
+    .tool-trays { gap: 8px 5px; min-height: auto; padding-bottom: 16px; }
+    .case-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .regular-cases { margin-top: 38px; }
+    .case-message { font-size: 13px; }
+    .game-footer { flex-direction: column; }
+}

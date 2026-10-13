@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kirim saran atau koreksi untuk panduan Growtopia.">
+    <title>Kritik &amp; Saran - GrowSimulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="site-header text-center py-4">
+        <div class="container">
+            <h1 class="h2 mb-2">Kritik &amp; Saran <span class="mode-name">Growtopia</span></h1>
+            <p class="mb-0">Bantu kami membuat simulator Surgery dan Villains Guide lebih baik.</p>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-sm site-nav" aria-label="Navigasi utama">
+        <div class="container justify-content-center">
+            <ul class="navbar-nav flex-column flex-sm-row gap-sm-2 text-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="surgery.html">Surgery</a></li>
+                <li class="nav-item"><a class="nav-link" href="crime.html">Villains Guide</a></li>
+                <li class="nav-item"><a class="nav-link" href="form.html" aria-current="page">Kritik &amp; Saran</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container flex-grow-1 py-4 py-md-5">
+        <section class="content-card p-3 p-md-4 mx-auto" aria-labelledby="form-title">
+            <div class="row g-4">
+                <div class="col-12 col-lg-10 mx-auto">
+                    <h2 id="form-title" class="h3">Kirim saran atau koreksi</h2>
+                    <p>Bantu Agar Website ini Berkembang!</p>
+
+                    <div id="form-confirmation" class="alert alert-success d-none" role="status" aria-live="polite"></div>
+
+                    <form id="guide-feedback-form">
+                        <div class="mb-3">
+                            <label for="player-name" class="form-label">Nama pemain <span class="text-secondary">(opsional)</span></label>
+                            <input class="form-control" id="player-name" name="playerName" type="text" maxlength="40" autocomplete="nickname" placeholder="Contoh: GrowPlayer">
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label for="guide-topic" class="form-label">Topik panduan</label>
+                                <select class="form-select" id="guide-topic" name="topic" required>
+                                    <option value="" selected disabled>Pilih topik</option>
+                                    <option value="Surgery">Surgery</option>
+                                    <option value="Villains">Villains / Crimefighting</option>
+                                </select>
+                                <div class="invalid-feedback">Pilih topik yang ingin kamu komentari.</div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="feedback-type" class="form-label">Jenis masukan</label>
+                                <select class="form-select" id="feedback-type" name="feedbackType" required>
+                                    <option value="" selected disabled>Pilih jenis masukan</option>
+                                    <option value="Correction">Koreksi informasi</option>
+                                    <option value="Suggestion">Saran tambahan</option>
+                                    <option value="Question">Pertanyaan</option>
+                                </select>
+                                <div class="invalid-feedback">Pilih jenis masukan.</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 mb-3">
+                            <label for="case-name" class="form-label">Kasus atau karakter <span class="text-secondary">(opsional)</span></label>
+                            <input class="form-control" id="case-name" name="caseName" type="text" maxlength="80" placeholder="Contoh: Broken Heart atau Jimmy Snow">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="feedback-details" class="form-label">Detail masukan</label>
+                            <textarea class="form-control" id="feedback-details" name="details" rows="5" minlength="10" maxlength="1000" placeholder="Jelaskan bagian yang ingin dikoreksi atau ditambahkan..." required></textarea>
+                            <div class="form-text">Tulis setidaknya 10 karakter agar masukannya jelas.</div>
+                            <div class="invalid-feedback">Isi detail masukan minimal 10 karakter.</div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-success" type="submit">Kirim Saran</button>
+                            <button class="btn btn-outline-secondary" type="reset">Bersihkan Form</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer py-3 text-center">
+        <div class="container"><p class="mb-0">&copy; 2026 GrowSimulator.</p></div>
+    </footer>
+
+    <script>
+        const feedbackForm = document.querySelector('#guide-feedback-form');
+        const confirmation = document.querySelector('#form-confirmation');
+
+        feedbackForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!feedbackForm.reportValidity()) return;
+
+            const formData = new FormData(feedbackForm);
+            const playerName = formData.get('playerName')?.trim();
+            const greeting = playerName ? `Terima kasih, ${playerName}!` : 'Terima kasih!';
+            confirmation.textContent = `${greeting} Masukan untuk topik ${formData.get('topic')} sudah dicatat sebagai contoh. Form ini belum terhubung ke server, jadi datanya tidak disimpan.`;
+            confirmation.classList.remove('d-none');
+            confirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        feedbackForm.addEventListener('reset', () => {
+            confirmation.classList.add('d-none');
+            confirmation.textContent = '';
+        });
+    </script>
+</body>
+</html>

@@ -1,57 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surgery Simulator - GrowCulator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Growtopia surgery practice simulator with selectable cases and contextual tools.">
+    <title>Growtopia Surgery Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="surgery.css">
 </head>
-<body>
-    <header>
-        <h1>Mode: <span class="mode-name">Surgery Simulator</span></h1>
-    </header>
+<body class="surgery-page">
+    <main class="surgery-screen">
+        <header class="simulator-heading">
+            <h1>Growtopia Surgery Simulator.</h1>
+            <p>Tutorial mode: only the next required tool is shown.</p>
+        </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Kembali ke Beranda</a></li>
-            <li><a href="crime.html">Pindah ke Crime Simulator</a></li>
-        </ul>
-    </nav>
+        <section class="patient-status" aria-label="Status pasien">
+            <p id="diagnosis-name">The patient has not been diagnosed.</p>
+            <div class="status-row"><span>Pulse: <strong id="pulse-status">Steady</strong></span><span>Status: <strong id="patient-state">Awake</strong></span></div>
+            <div class="status-row"><span>Temp: <strong id="temp-status">98.6</strong></span><span>Operation site: <strong id="site-status">Not sanitized</strong></span></div>
+            <p>Incisions: <strong id="incision-status">0</strong></p>
+            <p class="patient-alert" id="patient-alert">Patient is prepped for surgery.</p>
+        </section>
 
-    <main>
-        <article>
-            <h2>Ruang Operasi</h2>
-            
-            <img src="img/surg.jpg" alt="Karakter Growtopia sedang terbaring di kasur operasi dengan status pasien di atas kepalanya" width="300">
-            
-            <h3>Status Pasien:</h3>
-            <p>Kondisi: <strong>Patient has shattered bones.</strong></p>
-            <p>Denyut Nadi: Lemah | Suhu: Normal</p>
+        <section class="tool-trays" id="tools-grid" aria-label="Surgical tools"></section>
 
-            <h3>Tindakan Medis</h3>
-            <form action="#" method="POST">
-                <p class="form-field">
-                    <label for="pilihAlat">Pilih Alat Bedah:</label><br>
-                    <select id="pilihAlat" name="pilihAlat">
-                        <option value="sponge">Sponge</option>
-                        <option value="scalpel">Scalpel</option>
-                        <option value="stitches">Stitches</option>
-                        <option value="splint">Splint</option>
-                    </select>
-                </p>
-                <p class="form-field">
-                    <label for="catatanMedis">Catatan Tindakan (Opsional):</label><br>
-                    <textarea id="catatanMedis" name="catatanMedis" rows="3" cols="30" placeholder="Contoh: Menggunakan splint untuk tulang patah..."></textarea>
-                </p>
-                <p>
-                    <button type="button">Gunakan Alat</button>
-                </p>
-            </form>
-        </article>
+        <div class="game-divider"></div>
+        <div class="case-controls">
+            <button class="game-button" id="reset-button" type="button">Select the case</button>
+            <span id="move-counter">Move 0</span>
+            <button class="game-button" id="fix-button" type="button">Fix it!</button>
+        </div>
+        <p id="diagnosis-detail" class="case-message" aria-live="polite">Select a case to begin.</p>
+
+        <div class="game-divider"></div>
+        <section class="case-selection" aria-labelledby="cases-title">
+            <h2 id="cases-title">Available Surgery Cases</h2>
+            <div class="case-group">
+                <h3>Maladies</h3>
+                <div class="case-list maladies-list" id="malady-list"></div>
+            </div>
+            <div class="case-group regular-cases">
+                <div class="case-list" id="diagnosis-list"></div>
+            </div>
+        </section>
+        <footer class="game-footer"><a href="index.html">Back to GrowSimulator</a> <span>Practice simulation · <a href="https://growtopiawiki.com/w/Guide:Surgery" target="_blank" rel="noreferrer">tool icons and surgery reference: Growtopia Wiki</a></span></footer>
+        <div class="visually-hidden" id="action-announcer" aria-live="polite"></div>
+        <div class="visually-hidden" id="action-log"></div>
     </main>
-
-    <footer>
-        <p>&&copy; 2026 GrowSimulator. Tugas Web 2.</p>
-    </footer>
+    <script src="surgery.js" defer></script>
 </body>
 </html>
