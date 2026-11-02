@@ -1,6 +1,10 @@
 import VillainCard from './VillainCard.jsx'
 
-export default function VillainList({ villains, onDelete }) {
+export default function VillainList({ villains, onDelete, loading }) {
+  if (loading) {
+    return <div className="empty-state" role="status"><p>Memuat direktori dari API…</p></div>
+  }
+
   if (villains.length === 0) {
     return (
       <div className="empty-state" role="status">

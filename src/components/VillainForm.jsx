@@ -10,16 +10,19 @@ const emptyForm = {
 
 export default function VillainForm({ onAdd }) {
   const [form, setForm] = useState(emptyForm)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   function handleChange(event) {
     const { name, value } = event.target
     setForm((currentForm) => ({ ...currentForm, [name]: value }))
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    onAdd({ ...form, hp: Number(form.hp) })
-    setForm(emptyForm)
+    setIsSubmitting(true)
+    const wasAdded = await onAdd({ ...form, hp: Number(form.hp) })
+    if (wasAdded) setForm(emptyForm)
+    setIsSubmitting(false)
   }
 
   return (
@@ -85,8 +88,10 @@ export default function VillainForm({ onAdd }) {
         required
       />
 
-      <button className="add-button" type="submit"><span aria-hidden="true">+</span> Tambah ke direktori</button>
-      <p className="form-note">Data baru langsung masuk ke daftar di halaman ini.</p>
+      <button className="add-button" type="submit" disabled={isSubmitting}>
+        <span aria-hidden="true">+</span> {isSubmitting ? 'Menyimpan…' : 'Tambah ke direktori'}
+      </button>
+      <p className="form-note">Data disimpan ke MockAPI dan muncul di direktori.</p>
     </form>
   )
 }

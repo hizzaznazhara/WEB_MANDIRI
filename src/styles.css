@@ -72,6 +72,7 @@ h1 { margin: 0; color: #173f35; font-size: clamp(36px, 5vw, 54px); line-height: 
 .add-button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; margin-top: 8px; border: 0; border-radius: 9px; background: #277354; color: white; font-size: 13px; font-weight: 700; transition: background .15s ease, transform .15s ease; }
 .add-button span { font-size: 19px; line-height: 1; }
 .add-button:hover { transform: translateY(-1px); background: #1d6045; }
+.add-button:disabled { cursor: wait; opacity: .7; transform: none; }
 .add-button:focus-visible, .delete-button:focus-visible { outline: 3px solid #92d5ae; outline-offset: 2px; }
 .form-note { margin: 2px 0 0; color: #829087; text-align: center; font-size: 11px; line-height: 1.5; }
 
@@ -100,6 +101,7 @@ h1 { margin: 0; color: #173f35; font-size: clamp(36px, 5vw, 54px); line-height: 
 .empty-icon { width: 44px; height: 44px; display: grid; place-items: center; margin: 0 auto 13px; border-radius: 13px; background: #eaf4ed; color: #438169; font-size: 25px; }
 .empty-state h3 { margin: 0 0 6px; color: #274a39; font-size: 18px; }
 .empty-state p { margin: 0; color: #78867e; font-size: 13px; }
+.api-error { margin: 0 0 20px; padding: 12px 15px; border: 1px solid #efcaca; border-radius: 10px; background: #fff5f4; color: #9b3535; font-size: 13px; }
 .site-footer { padding: 24px 20px; color: #75827c; text-align: center; font-size: 13px; }
 .site-footer span { margin: 0 5px; color: #438169; }
 
