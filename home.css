@@ -1,0 +1,25 @@
+.home-card {
+    max-width: 870px;
+}
+
+.home-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 310px;
+    border: 1px solid #a8d6bd;
+    border-radius: .5rem;
+    background: #f5f7f2;
+}
+
+.home-feature h3 {
+    margin-bottom: .5rem;
+}
+
+.home-feature p {
+    line-height: 1.6;
+}
+
+@media (max-width: 575.98px) {
+    .home-feature { min-height: 0; }
+}
