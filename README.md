@@ -48,10 +48,20 @@ Request REST Client tersedia di [`backend/villains.http`](backend/villains.http)
 | `src/components/VillainForm.jsx` | Form untuk tambah dan edit |
 | `src/components/VillainCard.jsx` | Kartu data dengan aksi edit dan hapus |
 
-## Screenshot tugas
+## Screenshot REST Client
 
-Simpan screenshot request dan response dari REST Client di `docs/screenshots/Tugas09/` saat menjalankan request dalam `backend/villains.http`. Sertakan screenshot GET, POST, GET detail, PATCH, dan DELETE di repository saat pengumpulan.
+Bukti request dan response tersimpan di `docs/screenshots/Tugas09/`:
 
-## Halaman statis lama
+- [GET daftar Villain](docs/screenshots/Tugas09/GET_daftar_villain.png)
+- [POST Villain](docs/screenshots/Tugas09/POST_daftar_villain.png)
+- [GET satu Villain](docs/screenshots/Tugas09/GET_satu_villain.png)
+- [PATCH Villain](docs/screenshots/Tugas09/PATCH_villain.png)
+- [DELETE Villain](docs/screenshots/Tugas09/DELETE_villain.png)
+- [Error 404](docs/screenshots/Tugas09/Error_404.png)
+- [Error nama duplikat 409](docs/screenshots/Tugas09/Error_data_sama.png)
 
-`crime.html`, `surgery.html`, dan `form.html` masih disimpan sebagai halaman dari tugas sebelumnya. Beranda lama dibuka lewat `index.html`, sedangkan direktori React dibuka lewat `villains.html`.
+## Halaman web
+
+- `index.html` adalah beranda GrowSimulator dengan navigasi ke Surgery, Villains Guide, direktori, dan formulir saran.
+- `villains.html` membuka direktori React yang terhubung ke backend NestJS.
+- `surgery.html`, `crime.html`, dan `form.html` adalah halaman Surgery, panduan Villains, dan saran yang sudah menjadi bagian dari web ini.
