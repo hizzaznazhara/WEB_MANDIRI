@@ -1,6 +1,6 @@
 import VillainCard from './VillainCard.jsx'
 
-export default function VillainList({ villains, onDelete, loading }) {
+export default function VillainList({ villains, onDelete, onEdit, loading }) {
   if (loading) {
     return <div className="empty-state" role="status"><p>Memuat direktori dari API…</p></div>
   }
@@ -18,7 +18,7 @@ export default function VillainList({ villains, onDelete, loading }) {
   return (
     <div className="villain-list">
       {villains.map((villain) => (
-        <VillainCard key={villain.id} villain={villain} onDelete={onDelete} />
+        <VillainCard key={villain.id} villain={villain} onDelete={onDelete} onEdit={onEdit} />
       ))}
     </div>
   )

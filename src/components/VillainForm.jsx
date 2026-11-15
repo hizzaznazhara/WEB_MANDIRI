@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const emptyForm = {
   name: '',
@@ -8,9 +8,24 @@ const emptyForm = {
   strategy: '',
 }
 
-export default function VillainForm({ onAdd }) {
+export default function VillainForm({ onAdd, onUpdate, editingVillain, onCancelEdit }) {
   const [form, setForm] = useState(emptyForm)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  useEffect(() => {
+    if (!editingVillain) {
+      setForm(emptyForm)
+      return
+    }
+    setForm({
+      name: editingVillain.name,
+      category: editingVillain.category,
+      hp: String(editingVillain.hp),
+      cards: editingVillain.cards,
+      strategy: editingVillain.strategy,
+    })
+    document.getElementById('villain-name')?.focus()
+  }, [editingVillain])
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -20,8 +35,14 @@ export default function VillainForm({ onAdd }) {
   async function handleSubmit(event) {
     event.preventDefault()
     setIsSubmitting(true)
-    const wasAdded = await onAdd({ ...form, hp: Number(form.hp) })
-    if (wasAdded) setForm(emptyForm)
+    const details = { ...form, hp: Number(form.hp) }
+    const wasSaved = editingVillain
+      ? await onUpdate(editingVillain.id, details)
+      : await onAdd(details)
+    if (wasSaved) {
+      setForm(emptyForm)
+      if (editingVillain) onCancelEdit()
+    }
     setIsSubmitting(false)
   }
 
@@ -89,9 +110,11 @@ export default function VillainForm({ onAdd }) {
       />
 
       <button className="add-button" type="submit" disabled={isSubmitting}>
-        <span aria-hidden="true">+</span> {isSubmitting ? 'Menyimpan…' : 'Tambah ke direktori'}
+        <span aria-hidden="true">{editingVillain ? '✓' : '+'}</span>{' '}
+        {isSubmitting ? 'Menyimpan...' : editingVillain ? 'Simpan perubahan' : 'Tambah ke direktori'}
       </button>
-      <p className="form-note">Data disimpan ke MockAPI dan muncul di direktori.</p>
+      {editingVillain && <button className="cancel-edit-button" type="button" onClick={onCancelEdit}>Batal mengedit</button>}
+      <p className="form-note">Data disimpan ke backend GrowSimulator.</p>
     </form>
   )
 }

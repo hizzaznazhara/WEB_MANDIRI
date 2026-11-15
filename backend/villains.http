@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:3000/api/v1/villains
+@villainId = 11
+
+### GET: seluruh villain
+GET {{baseUrl}}
+
+### POST: tambah villain baru
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "name": "COntoh Nmabah Villain",
+  "category": "Villain",
+  "hp": 8,
+  "cards": "Ice Shards, Frozen Mirror",
+  "strategy": "Gunakan Frozen Mirror sebelum Ice Shards untuk mengalahkan target."
+}
+
+### GET: satu villain (gunakan ID dari response POST)
+GET {{baseUrl}}/{{villainId}}
+
+### PATCH: ubah data villain
+PATCH {{baseUrl}}/{{villainId}}
+Content-Type: application/json
+
+{
+  "hp": 9,
+  "strategy": "Gunakan kartu bertahan lebih dahulu, lalu serang saat lawan melemah."
+}
+
+### DELETE: hapus villain yang sama
+DELETE {{baseUrl}}/{{villainId}}
+
+### Error: data dengan nama sama menghasilkan 409 Conflict
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "name": "The Firebug",
+  "category": "Villain",
+  "hp": 8,
+  "cards": "Frozen Mirror, Ice Shards",
+  "strategy": "Coba membuat karakter dengan nama yang sudah digunakan."
+}
+
+### Error: ID yang tidak ada menghasilkan 404 Not Found
+GET {{baseUrl}}/9999

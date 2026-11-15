@@ -1,8 +1,11 @@
-export default function VillainCard({ villain, onDelete }) {
+export default function VillainCard({ villain, onDelete, onEdit }) {
   return (
     <article className="villain-card">
       <div className="villain-card-topline">
         <span className={`type-pill ${villain.category.toLowerCase()}`}>{villain.category}</span>
+        <button className="edit-button" type="button" onClick={() => onEdit(villain)}>
+          Edit
+        </button>
         <button
           className="delete-button"
           type="button"

@@ -1,40 +1,57 @@
 # GrowSimulator — Direktori Villain
 
-Aplikasi frontend React bertema Growtopia untuk menyimpan catatan Villain: kategori, health, kartu andalan, dan strategi. Daftar awal memakai karakter dari panduan Villains yang sudah ada di project.
+Aplikasi latihan Growtopia dengan frontend React dan backend NestJS. Pengguna dapat melihat, menambah, mengubah, dan menghapus catatan karakter Villain. Backend memakai struktur MVC dan menyimpan data sementara di array dalam memori.
 
 ## Menjalankan aplikasi
 
-Pastikan Node.js dan npm sudah terpasang, lalu dari folder project jalankan:
+Pasang dependency frontend dari folder utama, lalu jalankan dua server di terminal terpisah:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka alamat lokal yang ditampilkan Vite, biasanya `http://localhost:5173`.
+```bash
+cd backend
+npm install
+npm run start:dev
+```
 
-## Fitur
+Buka alamat Vite yang ditampilkan, biasanya `http://localhost:5173`. Proxy Vite meneruskan `/api` ke NestJS di `http://localhost:3000`.
 
-- Ringkasan jumlah karakter berdasarkan kategori.
-- Form controlled untuk menambah Villain, Mastermind, atau Supervillain.
-- Daftar kartu karakter dengan health, kartu andalan, dan strategi.
-- Hapus karakter dari daftar; pesan kosong tampil ketika semua data dihapus.
+> Data backend disimpan di memori dan kembali ke data awal saat server dimulai ulang. Database permanen belum dipasang.
 
-> Catatan: daftar saat ini disimpan di state React sehingga kembali ke data awal saat halaman dimuat ulang. Penyimpanan permanen dan backend akan ditambahkan pada tugas berikutnya.
+## API Villains
 
-## Struktur React
+Base URL lokal: `http://localhost:3000/api/v1/villains`
+
+| Method | Endpoint | Aksi |
+| --- | --- | --- |
+| GET | `/api/v1/villains` | Daftar semua villain |
+| GET | `/api/v1/villains/:id` | Detail satu villain |
+| POST | `/api/v1/villains` | Tambah villain |
+| PATCH | `/api/v1/villains/:id` | Ubah villain |
+| DELETE | `/api/v1/villains/:id` | Hapus villain |
+
+Request REST Client tersedia di [`backend/villains.http`](backend/villains.http). Validasi request diaktifkan global: nama, kategori, HP, kartu, dan strategi divalidasi lewat DTO. Nama duplikat menghasilkan `409 Conflict`, sedangkan ID yang tidak ditemukan menghasilkan `404 Not Found`.
+
+## Struktur MVC NestJS
 
 | Path | Peran |
 | --- | --- |
-| `src/App.jsx` | State daftar dan susunan halaman |
-| `src/components/Header.jsx` | Header aplikasi |
-| `src/components/PageIntro.jsx` | Judul dan pengantar halaman |
-| `src/components/SummaryCard.jsx` | Ringkasan jumlah data |
-| `src/components/VillainForm.jsx` | Form controlled untuk menambah data |
-| `src/components/VillainList.jsx` | Render daftar dan kondisi kosong |
-| `src/components/VillainCard.jsx` | Kartu informasi tiap karakter |
-| `src/data/villains.js` | Data awal karakter |
+| `backend/src/villains/entities/villain.entity.ts` | Struktur data karakter |
+| `backend/src/villains/dto/` | Validasi payload create dan update |
+| `backend/src/villains/villains.service.ts` | CRUD dan penyimpanan array dalam memori |
+| `backend/src/villains/villains.controller.ts` | Endpoint HTTP, memakai service lewat dependency injection |
+| `backend/src/villains/villains.module.ts` | Registrasi controller dan service |
+| `src/App.jsx` | Memuat dan mengubah data lewat API |
+| `src/components/VillainForm.jsx` | Form untuk tambah dan edit |
+| `src/components/VillainCard.jsx` | Kartu data dengan aksi edit dan hapus |
+
+## Screenshot tugas
+
+Simpan screenshot request dan response dari REST Client di `docs/screenshots/Tugas09/` saat menjalankan request dalam `backend/villains.http`. Sertakan screenshot GET, POST, GET detail, PATCH, dan DELETE di repository saat pengumpulan.
 
 ## Halaman statis lama
 
-`crime.html`, `surgery.html`, dan `form.html` masih disimpan sebagai referensi dari project sebelumnya. Aplikasi React aktif dibuka lewat `index.html`.
+`crime.html`, `surgery.html`, dan `form.html` masih disimpan sebagai halaman dari tugas sebelumnya. Beranda lama dibuka lewat `index.html`, sedangkan direktori React dibuka lewat `villains.html`.

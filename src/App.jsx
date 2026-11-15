@@ -5,14 +5,7 @@ import SummaryCard from './components/SummaryCard.jsx'
 import VillainForm from './components/VillainForm.jsx'
 import VillainList from './components/VillainList.jsx'
 
-const VILLAINS_API = 'https://6ae8aafa1a7b15aaa50f5d25.mockapi.io/api/v1/villains'
-
-function extractVillains(payload) {
-  if (Array.isArray(payload)) return payload
-  if (Array.isArray(payload?.value)) return payload.value
-  if (Array.isArray(payload?.data)) return payload.data
-  return []
-}
+const VILLAINS_API = '/api/v1/villains'
 
 async function requestVillains(url = VILLAINS_API, options = {}) {
   const response = await fetch(url, {
@@ -24,7 +17,9 @@ async function requestVillains(url = VILLAINS_API, options = {}) {
   })
 
   if (!response.ok) {
-    throw new Error(`Permintaan API gagal (${response.status}). Coba lagi sebentar.`)
+    const payload = await response.json().catch(() => null)
+    const message = Array.isArray(payload?.message) ? payload.message.join(', ') : payload?.message
+    throw new Error(message || `Permintaan API gagal (${response.status}). Coba lagi sebentar.`)
   }
 
   if (response.status === 204) return null
@@ -35,10 +30,11 @@ export default function App() {
   const [villains, setVillains] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [editingVillain, setEditingVillain] = useState(null)
 
   async function refreshVillains() {
     const payload = await requestVillains()
-    setVillains(extractVillains(payload))
+    setVillains(payload)
   }
 
   useEffect(() => {
@@ -46,7 +42,7 @@ export default function App() {
 
     requestVillains()
       .then((payload) => {
-        if (isCurrent) setVillains(extractVillains(payload))
+        if (isCurrent) setVillains(payload)
       })
       .catch((requestError) => {
         if (isCurrent) setError(requestError.message)
@@ -83,6 +79,21 @@ export default function App() {
     }
   }
 
+  async function updateVillain(id, villainDetails) {
+    setError('')
+    try {
+      await requestVillains(`${VILLAINS_API}/${encodeURIComponent(id)}`, {
+        method: 'PATCH',
+        body: JSON.stringify(villainDetails),
+      })
+      await refreshVillains()
+      return true
+    } catch (requestError) {
+      setError(requestError.message)
+      return false
+    }
+  }
+
   return (
     <div className="app-shell">
       <Header />
@@ -100,7 +111,12 @@ export default function App() {
               </div>
               <span className="heading-icon" aria-hidden="true">+</span>
             </div>
-            <VillainForm onAdd={addVillain} />
+            <VillainForm
+              onAdd={addVillain}
+              onUpdate={updateVillain}
+              editingVillain={editingVillain}
+              onCancelEdit={() => setEditingVillain(null)}
+            />
           </section>
 
           <section className="list-section" aria-labelledby="list-heading">
@@ -111,7 +127,7 @@ export default function App() {
               </div>
               <span className="list-count">{villains.length} DATA</span>
             </div>
-            <VillainList villains={villains} onDelete={deleteVillain} loading={loading} />
+            <VillainList villains={villains} onDelete={deleteVillain} onEdit={setEditingVillain} loading={loading} />
           </section>
         </div>
       </main>
